@@ -9,7 +9,8 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
   socket.on('chat message', msg => {
-    io.emit('chat message', msg);
+    console.log(socket.id);
+    io.emit('chat message', `User ${socket.id.substr(0,2)} sad: ${msg}`);
   });
 });
 
